@@ -1,0 +1,14 @@
+.pageWrapper {
+	position: relative;
+	width: 60%;
+	left: 20%;
+	top: 100px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, .01);
+	border-radius: 10px;
+	padding: 20px;
+}
+.title {
+	font-size: 32px;
+	font-weight: lighter;
+}

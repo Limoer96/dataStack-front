@@ -1,0 +1,27 @@
+:global(.transitionWrapper-enter) {
+	opacity: 0.1;
+}
+:global(.transitionWrapper-enter.transitionWrapper-enter-active){
+    opacity: 1;
+    transition: all .4s ease-out;
+}
+:global(.transitionWrapper-exit) {
+    opacity: 1;
+}
+:global(.transitionWrapper-exit.transitionWrapper-exit-active){
+    opacity: 0.01;
+    transition: all .4s ease-out;
+}
+
+:global(.wrapper){
+    position: relative;
+    width: 100%;
+}
+:global(.divContainer) {
+  padding: 20px;
+  background-color: #ccc;
+  width: 200px;
+  margin: auto;
+  text-align: center;
+  border-radius: 4px;
+}
