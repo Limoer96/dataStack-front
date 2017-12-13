@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --port 8888"
   },
   "dependencies": {
-    "antd": "^3.0.0",
+    "antd": "^3.0.1",
     "axios": "^0.17.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -15,6 +15,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.1",
+    "recharts": "^1.0.0-beta.6",
     "redux": "^3.7.2",
     "semantic-ui-react": "^0.76.0"
   },

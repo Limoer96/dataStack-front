@@ -5,6 +5,8 @@ import api from './api';
 import Header from './components/Header/Header';
 import LeftSideMenu from './components/menu/LeftSideMenu/LeftSideMenu';
 import LoginPage from './components/page/LoginPage/LoginPage';
+import IndexPage from './components/page/IndexPage/IndexPage';
+import DashbordPage from './components/page/DashbordPage/DashbordPage';
 import style from './style.css';
 
 class App extends React.Component {
@@ -35,8 +37,8 @@ class App extends React.Component {
 					<LeftSideMenu disabled={!isLogin}/>
 					<div className={style.contentWrapper}>
 						<Switch>
-							<Route exact path='/' render={() => <p>this is index page</p>}/>
-							<Route exact path='/dashbord' render={() => <p>this is dashbord page <Link to='/'>Index</Link></p>}/>
+							<Route exact path='/' component={IndexPage}/>
+							<Route exact path='/dashbord' component={DashbordPage}/>
 							<Route exact path='/login' render={() => <LoginPage 
 								changeLoginState={this.changeLoginState}
 								history={history}

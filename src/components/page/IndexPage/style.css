@@ -1,0 +1,32 @@
+.container {
+	position: relative;
+	top: 10px;
+}
+.mainTitle {
+	font-size: 18px;
+	font-weight: lighter;
+	text-indent: 36px;
+	padding-left: 5px;
+	background-color: rgba(220, 220, 220, .5);
+	border-left: 2px solid rgb(0, 191, 255);
+}
+.section {
+	margin: 10px 0;
+}
+
+.section > p:first-child {
+	font-size: 16px;
+}
+
+.section > p:last-child {
+	font-size: 12px;
+	text-indent: 24px;
+}
+
+.useTitle {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.listContainer {
+	margin-top: 20px;
+}

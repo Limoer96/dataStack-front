@@ -1,0 +1,18 @@
+
+.dashbordContainer {
+	position: relative;
+	/*text-align: center;*/
+}
+
+.title {
+	font-weight: lighter;
+	padding-left: 20px;
+}
+.description {
+	margin-top: 20px;
+	font-size: 14px;
+	font-weight: lighter;
+}
+.description > span {
+	font-weight: bold;
+}

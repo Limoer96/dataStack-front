@@ -8,7 +8,7 @@ const Header = ({ isLogin }) => (
 		<img src={img} alt='logo' className={style.header} />
 		<p className={style.message}>(数据平台)</p>
 		{
-			isLogin ? <span className={style.user}>欢迎你{ localStorage.getItem('userName') }</span> : <span className={style.user}>请先<Link to='/login'>登录</Link></span>
+			isLogin ? <span className={style.user}>欢迎你！{ localStorage.getItem('userName') }</span> : <span className={style.user}>请先<Link to='/login'>登录</Link></span>
 		}
 	</div>
 )

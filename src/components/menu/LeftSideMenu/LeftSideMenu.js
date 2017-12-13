@@ -6,20 +6,18 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 const LeftSideMenu = ({ disabled }) => (
-	<div style={{width: 260}}>
+	<div style={{width: 260, marginTop: 10}}>
 		<Menu
-			defaultSelectedKeys={['1']}
 			defaultOpenKeys={['sub1', 'sub4', 'sub5']}
 			mode='inline'
-			theme='dark'
 		>
 			<Menu.Item key='1'>
 				<Icon type="login" />
-				<span><Link to='login' style={{color: 'rgba(255, 255, 255, .7)'}}>登录/登出</Link></span>
+				<span><Link to='/login'>登录/登出</Link></span>
 			</Menu.Item>
 			<Menu.Item key='2'>
 				<Icon type="info" />
-				<span>总览</span>
+				<span><Link to='/dashbord'>总览</Link></span>
 			</Menu.Item>
 			<SubMenu key='sub1' title={<span><Icon type="appstore" /><span>数据</span></span>}>
 				<SubMenu key='sub2' title={<span>实验室</span>}>

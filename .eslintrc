@@ -26,6 +26,7 @@
 		"prefer-destructuring": [0],
 		"no-return-assign": [0],
 		"no-underscore-dangle": [0],
-		"react/jsx-boolean-value": [0]
+		"react/jsx-boolean-value": [0],
+		"no-restricted-syntax": [0]
 	}
 }
