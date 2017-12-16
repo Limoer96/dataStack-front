@@ -1,0 +1,10 @@
+.title {
+	width: 100%;
+	text-align: center;
+	font-weight: lighter;
+}
+.container {
+	position: relative;
+	width: 90%;
+	left: 5%;
+}

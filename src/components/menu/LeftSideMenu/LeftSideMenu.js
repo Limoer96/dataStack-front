@@ -21,11 +21,11 @@ const LeftSideMenu = ({ disabled }) => (
 			</Menu.Item>
 			<SubMenu key='sub1' title={<span><Icon type="appstore" /><span>数据</span></span>}>
 				<SubMenu key='sub2' title={<span>实验室</span>}>
-					<Menu.Item disabled={disabled} key='3'><span>计算机系统与虚拟技术开发实验室</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='4'><span>计算机网络技术开放实验室</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='5'><span>大数据与云计算开放实验室</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='6'><span>“互联网+” 创新实验室</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='7'><span>信息技术与应用综合实验室</span></Menu.Item>
+					<Menu.Item disabled={disabled} key='3'><Link to='/experiment/1'><span>计算机系统与虚拟技术开发实验室</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='4'><Link to='/experiment/2'><span>计算机网络技术开放实验室</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='5'><Link to='/experiment/3'><span>大数据与云计算开放实验室</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='6'><Link to='/experiment/4'><span>“互联网+” 创新实验室</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='7'><Link to='/experiment/5'><span>信息技术与应用综合实验室</span></Link></Menu.Item>
 				</SubMenu>
 				<SubMenu key='sub3' title={<span>时间</span>}>
 					<Menu.Item disabled={disabled} key='8'><span>星期一</span></Menu.Item>

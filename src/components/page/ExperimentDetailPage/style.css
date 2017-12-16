@@ -1,0 +1,42 @@
+.container {
+	position: relative;
+}
+.title {
+	width: 100%;
+	font-weight: lighter;
+	text-align: center;
+}
+.content {
+	font-size: 14px;
+}
+.content > span{
+	font-weight: bold;
+}
+.scoreContainer {
+	position: absolute;
+	top: 150px;
+	right: 150px;
+	background-color: rgba(0, 0, 0, .05);
+	padding: 20px;
+	border-radius: 5px;
+}
+.scoreContainer > li {
+	list-style: none;
+	font-size: 14px;
+}
+
+.count {
+	font-weight: bold;
+}
+
+.percentageContainer {
+	position: absolute;
+	top: 83px;
+	right: 5px;
+	background-color: rgba(0, 0, 0 , .05);
+	padding: 20px;
+	border-radius: 5px;
+}
+.percentageContainer > li{
+	list-style: none;
+}

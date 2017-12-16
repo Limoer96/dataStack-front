@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Progress } from 'antd';
+import { Card, Progress, BackTop } from 'antd';
 import { 
 	BarChart, 
 	Bar, 
@@ -99,6 +99,7 @@ class DashbordPage extends Component {
 		        <Bar dataKey="count" fill="#8884d8" />
 					</BarChart>
 				</Card>
+				<BackTop />
 			</div>
 		)
 	}

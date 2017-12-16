@@ -12,6 +12,7 @@ module.exports = {
 	entry: path.join(ROOT_PATH, 'index.js'),
 	output: {
 		path: BUILD_PATH,
+		publicPath: '/',
 		filename: '[name].bundle.js'
 	},
 	devServer: {
