@@ -11,7 +11,9 @@ const api = {
 		getUsers: () => axios.get(`${URL}/data/users`).then(res => res.data),
 		getBehaviors: () => axios.get(`${URL}/data/behaviors`).then(res => res.data),
 		getExperimentsByPlaceId: (id) => axios.get(`${URL}/data/experiment?id=${id}`).then(res => res.data),
-		getExperimentByEid: (eId) => axios.get(`${URL}/data/e?e_id=${eId}`).then(res => res.data)
+		getExperimentByEid: (eId) => axios.get(`${URL}/data/e?e_id=${eId}`).then(res => res.data),
+		getStudentBySid: (sId) => axios.get(`${URL}/data/student?s_id=${sId}`).then(res => res.data),
+		getBehaviorInfoBySid: (sId) => axios.get(`${URL}/data/s?s_id=${sId}`).then(res => res.data)
 	}
 }
 

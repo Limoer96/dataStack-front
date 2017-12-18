@@ -9,6 +9,7 @@ import IndexPage from './components/page/IndexPage/IndexPage';
 import DashbordPage from './components/page/DashbordPage/DashbordPage';
 import ExperimentPage from './components/page/ExperimentPage/ExperimentPage';
 import ExperimentDetailPage from './components/page/ExperimentDetailPage/ExperimentDetailPage';
+import StudentDetailPage from './components/page/StudentDetailPage/StudentDetailPage';
 import style from './style.css';
 
 class App extends React.Component {
@@ -58,6 +59,12 @@ class App extends React.Component {
 								path='/detail/experiments/:e_id'
 								component={ExperimentDetailPage}
 							/>
+							<Route
+								exact
+								key={location.key}
+								path='/detail/student/:s_id'
+								component={StudentDetailPage}
+							/>	
 							<Route render={() => <p>this is default page</p>}/>
 						</Switch>
 					</div>	

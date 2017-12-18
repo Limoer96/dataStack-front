@@ -13,6 +13,28 @@ function genExpeimentData (dataFromServer) {
 	return returnData;
 }
 
+function genBehaviorsData(behaviors) {
+	const data = [];
+	console.log(behaviors);
+	for(const behavior of behaviors){
+		data.push({
+			e_id: behavior.e_id,
+			operating_category: behavior.operating_category,
+			start_time: behavior.start_time,
+			end_time: behavior.end_time
+		})
+	}
+	return data;
+}
+
+function genBehaviorsDataCount(behaviors) {
+	const data = [{name: '实验申请', value: 0}, {name: '实验学习', value: 0}, {name: '成果提交', value: 0}];
+	for(const behavior of behaviors) {
+		data[behavior.operating_category - 1 ].value += 1;
+	}
+	return data;
+}
+
 function initReturnData() {
 	const data = [];
 	const degrees = ['不及格', '及格', '一般', '良好', '优秀'];
@@ -79,4 +101,4 @@ function genExperimentMenberData(menber) {
 	return returnData;
 }
 
-export { genExpeimentData, genExperimentMenberData, genAttendance, genScore, getAverage };
+export { genExpeimentData, genExperimentMenberData, genAttendance, genScore, getAverage, genBehaviorsData, genBehaviorsDataCount };
