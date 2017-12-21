@@ -1,3 +1,5 @@
+import getNowWeek from './getNowWeek';
+
 function genExpeimentData (dataFromServer) {
 	const returnData = [];
 	for(const experiment of dataFromServer){
@@ -101,4 +103,73 @@ function genExperimentMenberData(menber) {
 	return returnData;
 }
 
-export { genExpeimentData, genExperimentMenberData, genAttendance, genScore, getAverage, genBehaviorsData, genBehaviorsDataCount };
+function genBehaviorsDataFilterWidthEId(behaviors, eIds) {
+	const data = [];
+	for(const behavior of behaviors) {
+		if(eIds.indexOf(behavior.e_id) > -1) {
+			data.push(`${new Date(behavior.start_time).toLocaleTimeString()}对编号为：${behavior.e_id}的实验产生了学习行为`);
+		}
+	}
+	return data;
+}
+
+function genExpeimentFilterByThreeCondition(experiments) {
+	const data = {
+		run: [],
+		end: [],
+		endThisWeek: []
+	}
+	for(const experiment of experiments) {
+		if(experiment.is_end) {
+			data.end.push({
+				e_id: experiment.e_id,
+				title: experiment.title,
+				place: experiment.place,
+				time: experiment.time,
+				end_week: experiment.end_week
+			})
+		}else {
+			if(experiment.end_week === getNowWeek(2017, 8, 12)) {
+				data.endThisWeek.push({
+					e_id: experiment.e_id,
+					title: experiment.title,
+					place: experiment.place,
+					time: experiment.time,
+					end_week: experiment.end_week
+				})
+			}else {
+				data.run.push({
+					e_id: experiment.e_id,
+					title: experiment.title,
+					place: experiment.place,
+					time: experiment.time,
+					end_week: experiment.end_week
+				})
+			}
+		}
+	}
+	return data;
+}
+
+
+function getExperimentsId(experiments) {
+	const data = [];
+	for(const experiment of experiments) {
+		data.push(Number(experiment.e_id))
+	}
+	return data;
+}
+
+
+export { 
+	genExpeimentData, 
+	genExperimentMenberData, 
+	genAttendance, 
+	genScore, 
+	getAverage, 
+	genBehaviorsData, 
+	genBehaviorsDataCount,
+	genExpeimentFilterByThreeCondition,
+	getExperimentsId,
+	genBehaviorsDataFilterWidthEId
+};

@@ -14,6 +14,10 @@ const api = {
 		getExperimentByEid: (eId) => axios.get(`${URL}/data/e?e_id=${eId}`).then(res => res.data),
 		getStudentBySid: (sId) => axios.get(`${URL}/data/student?s_id=${sId}`).then(res => res.data),
 		getBehaviorInfoBySid: (sId) => axios.get(`${URL}/data/s?s_id=${sId}`).then(res => res.data)
+	},
+	day: {
+		getExperimentsFilterByDay: (day) => axios.get(`${URL}/data/experiments_by_day?day=${day}`).then(res => res.data),
+		getBehaviorsNow: () => axios.get(`${URL}/data/behaviors/nowadays`).then(res => res.data)
 	}
 }
 

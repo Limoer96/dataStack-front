@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
+import getNowWeek from '../../../util/getNowWeek';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -27,13 +28,13 @@ const LeftSideMenu = ({ disabled }) => (
 					<Menu.Item disabled={disabled} key='6'><Link to='/experiment/4'><span>“互联网+” 创新实验室</span></Link></Menu.Item>
 					<Menu.Item disabled={disabled} key='7'><Link to='/experiment/5'><span>信息技术与应用综合实验室</span></Link></Menu.Item>
 				</SubMenu>
-				<SubMenu key='sub3' title={<span>时间</span>}>
-					<Menu.Item disabled={disabled} key='8'><span>星期一</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='9'><span>星期二</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='10'><span>星期三</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='11'><span>星期四</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='12'><span>星期五</span></Menu.Item>
-					<Menu.Item disabled={disabled} key='13'><span>星期六</span></Menu.Item>
+				<SubMenu key='sub3' title={<span>本周(第{getNowWeek(2017, 8, 12)}周)</span>}>
+					<Menu.Item disabled={disabled} key='8'><Link to='/day/1'><span>星期一</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='9'><Link to='/day/2'><span>星期二</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='10'><Link to='/day/3'><span>星期三</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='11'><Link to='/day/4'><span>星期四</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='12'><Link to='/day/5'><span>星期五</span></Link></Menu.Item>
+					<Menu.Item disabled={disabled} key='13'><Link to='/day/6'><span>星期六</span></Link></Menu.Item>
 				</SubMenu>
 				<SubMenu key='sub4' title={<span>更多</span>}>
 					<MenuItemGroup title='学生'>
@@ -41,7 +42,7 @@ const LeftSideMenu = ({ disabled }) => (
 						<Menu.Item disabled={disabled} key='15'><span>更多条件</span></Menu.Item>
 					</MenuItemGroup>
 					<MenuItemGroup title='搜索'>
-						<Menu.Item disabled={disabled} key='16'><span>综合搜错</span></Menu.Item>
+						<Menu.Item disabled={disabled} key='16'><span>综合搜索</span></Menu.Item>
 						<Menu.Item disabled={disabled} key='17'><span>更多</span></Menu.Item>
 					</MenuItemGroup>
 				</SubMenu>

@@ -10,6 +10,7 @@ import DashbordPage from './components/page/DashbordPage/DashbordPage';
 import ExperimentPage from './components/page/ExperimentPage/ExperimentPage';
 import ExperimentDetailPage from './components/page/ExperimentDetailPage/ExperimentDetailPage';
 import StudentDetailPage from './components/page/StudentDetailPage/StudentDetailPage';
+import FilterByDayDetailPage from './components/page/FilterByDayDetailPage/FilterByDayDetailPage';
 import style from './style.css';
 
 class App extends React.Component {
@@ -65,6 +66,12 @@ class App extends React.Component {
 								path='/detail/student/:s_id'
 								component={StudentDetailPage}
 							/>	
+							<Route
+								exact
+								key={location.key}
+								path='/day/:day'
+								component={FilterByDayDetailPage}
+							/>
 							<Route render={() => <p>this is default page</p>}/>
 						</Switch>
 					</div>	
