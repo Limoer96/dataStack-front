@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Collapse, Alert, Table, List } from 'antd';
-import { genExpeimentFilterByThreeCondition, getExperimentsId, genBehaviorsDataFilterWidthEId } from '../../../util/formatDataForShowTable';
+import { Card, Collapse, Alert, Table, List, Progress } from 'antd';
+import { genExpeimentFilterByThreeCondition, getExperimentsId, genBehaviorsDataFilterWidthEId, getBehaviorsCount } from '../../../util/formatDataForShowTable';
 import api from '../../../api';
 
 const Panel = Collapse.Panel;
@@ -40,7 +40,8 @@ const colunms = [
 class FilterByDayDetailPage extends React.Component {
 	state = {
 		data: [],
-		behaviors: []
+		behaviors: [],
+		currentPage: 1
 	}
 	componentDidMount() {
 		const { day } = this.props.match.params;
@@ -53,15 +54,16 @@ class FilterByDayDetailPage extends React.Component {
 					data: json1.global.data,
 					behaviors: json2.global.data
 				})
-				console.log(getExperimentsId(json1.global.data));
+				console.log(json2.global.data);
 			})
 		}
 	}
 	render() {
 		const weekDay = new Date().getDay();
 		const { day } = this.props.match.params;
-		const { data, behaviors } = this.state;
+		const { data, behaviors, currentPage } = this.state;
 		const { run, end, endThisWeek } = genExpeimentFilterByThreeCondition(data);
+		const listData = genBehaviorsDataFilterWidthEId(behaviors, getExperimentsId(data));
 		return (
 			<div>
 				{
@@ -87,11 +89,31 @@ class FilterByDayDetailPage extends React.Component {
 								</Collapse> : <Alert type='info' message='当前暂无实验' />
 							}
 						</Card>
+						<Card title='当前学习行为统计' style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
+							{
+								behaviors.length > 0 && <div style={{width: '100%', textAlign: 'center'}}>
+									<Progress type="circle" percent={behaviors.length*10} format={percent => `${percent/10} 人`}/>
+									<Progress type="circle" percent={getBehaviorsCount(behaviors)*5} format={percent => `${percent/5} 次`}/>
+									<p>当天截止到目前，共有{behaviors.length}名学生进行学习，产生了{getBehaviorsCount(behaviors)}次学习行为。</p>
+								</div>
+							}
+						</Card>
 						<Card style={{width: '90%', marginLeft: '5%', marginTop: '20px'}} title='当前学习行为列表'>
 							{
-								behaviors.length > 0 && <List bordered
-      						dataSource={genBehaviorsDataFilterWidthEId(behaviors, getExperimentsId(data))}
-      						renderItem={item => (<List.Item>{item}</List.Item>)}/>
+								behaviors.length > 0 && 
+									<List 	
+										itemLayout="vertical"
+										dataSource={listData}
+	      						renderItem={item => (<List.Item>
+	      							<List.Item.Meta 
+	      								title={`${item.name} ${item.s_id}`} 
+	      								description={`学习行为开始于：${item.start_time}， 持续${item.offset}分钟`}
+	      							/>
+	      							学生姓名：<a onClick={() => openNewTab(`http://localhost:8888/detail/student/${item.s_id}`)}>{item.name}</a>
+	      							实验编号：<a onClick={() => openNewTab(`http://localhost:8888/detail/experiments/${item.e_id}`)}>{item.e_id}</a>
+	      						</List.Item>
+	      						)}
+	      					/>
 							}
 						</Card>
 					</div> : <Card title={`周${day}实验统计`} style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}><Alert type='info' message='无法访问未到日期'/></Card>

@@ -105,12 +105,27 @@ function genExperimentMenberData(menber) {
 
 function genBehaviorsDataFilterWidthEId(behaviors, eIds) {
 	const data = [];
-	for(const behavior of behaviors) {
-		if(eIds.indexOf(behavior.e_id) > -1) {
-			data.push(`${new Date(behavior.start_time).toLocaleTimeString()}对编号为：${behavior.e_id}的实验产生了学习行为`);
+	for(const one of behaviors) {
+		for(const behavior of one.behaviors) {
+			if(eIds.indexOf(behavior.e_id) > -1) {
+				data.push({name: one.name, 
+					s_id: one.s_id, 
+					e_id: behavior.e_id, 
+					start_time: new Date(behavior.start_time).toLocaleTimeString(),
+					offset: Math.round((new Date(behavior.end_time).getTime() - new Date(behavior.start_time).getTime())/(60*1000))
+				})
+			}
 		}
 	}
 	return data;
+}
+
+function getBehaviorsCount(behaviors) {
+	let count = 0;
+	for(const one of behaviors) {
+		count += one.behaviors.length;
+	}
+	return count;
 }
 
 function genExpeimentFilterByThreeCondition(experiments) {
@@ -171,5 +186,6 @@ export {
 	genBehaviorsDataCount,
 	genExpeimentFilterByThreeCondition,
 	getExperimentsId,
-	genBehaviorsDataFilterWidthEId
+	genBehaviorsDataFilterWidthEId,
+	getBehaviorsCount
 };
