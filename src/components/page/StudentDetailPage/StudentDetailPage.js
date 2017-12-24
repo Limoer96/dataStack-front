@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, Collapse, Table, BackTop } from 'antd';
+import { Card, Collapse, Table, BackTop, Progress } from 'antd';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import api from '../../../api';
 import style from './style.css';
 import { genBehaviorsData, genBehaviorsDataCount } from '../../../util/formatDataForShowTable';
+import { filterIsEnd, filterIsComplete } from '../../../util/filterExperiments';
 
 const Panel = Collapse.Panel;
 
@@ -13,6 +14,37 @@ function openNewTab(url) {
 }
 
 const map = ['实验预约', '实验学习', '成果提交'];
+
+const experimentsColumns = [
+	{
+		title: '实验编号',
+		dataIndex: 'e_id',
+		key: 'e_id',
+		render: (text) => <a onClick={() => openNewTab(`http://localhost:8888/detail/experiments/${text}`)}>{text}</a>
+	},
+	{
+		title: '实验题目',
+		dataIndex: 'title',
+		key: 'title'
+	},
+	{
+		title: '实验地点',
+		dataIndex: 'place',
+		key: 'place'
+	},
+	{
+		title: '是否节课',
+		dataIndex: 'is_end',
+		key: 'is_end',
+		render: (text) => text ? <span>是</span>: <span>否</span>
+	},
+	{
+		title: '成绩',
+		dataIndex: 'score',
+		key: 'score',
+		render: (text) => text === 0 ? <span>暂无成绩</span> : <span>{text}</span>
+	}
+]
 
 const columns = [
 	{
@@ -44,24 +76,25 @@ const columns = [
 class StudentDetailPage extends React.Component {
 	state = {
 		info: '',
-		behaviors: ''
+		behaviors: '',
+		experimentsInfo: ''
 	}
 	componentDidMount() {
 		const { s_id } = this.props.match.params;
 		const baseInfoPromise = api.data.getStudentBySid(s_id);
 		const behaviorInfoPromise = api.data.getBehaviorInfoBySid(s_id);
-		Promise.all([baseInfoPromise, behaviorInfoPromise]).then(([json1, json2]) => {
+		const infoPromise = api.student.getInfoBySid(s_id);
+		Promise.all([baseInfoPromise, behaviorInfoPromise, infoPromise]).then(([json1, json2, json3]) => {
 			this.setState({
 				info: json1.global.data,
-				behaviors: json2.global.data
+				behaviors: json2.global.data,
+				experimentsInfo: json3.global.data
 			})
-			console.log('base', json1.global.data);
-			console.log('bahaviors', json2.global.data);
+			// console.log(json3.global.data);
 		})
 	}
 	render() {
-		const { info, behaviors } = this.state;
-		const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+		const { info, behaviors, experimentsInfo } = this.state;
 		return (
 			<div>
 				 <Card title={`学生${info.name}基本信息`} style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
@@ -90,6 +123,22 @@ class StudentDetailPage extends React.Component {
 							</Panel>
 						</Collapse>			 		
 				 </Card>
+				 {
+				 	experimentsInfo && <Card title='所学实验课程统计' style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
+				 		<div>
+				 			<p>共选<span>{experimentsInfo.length}</span>门实验， 已结课实验{filterIsEnd(experimentsInfo).end}门，已完成实验<span>{filterIsComplete(experimentsInfo).yes}</span>门，通过率<span>{filterIsComplete(experimentsInfo).yes/filterIsEnd(experimentsInfo).end}</span></p>
+				 			<Progress type="circle" percent={experimentsInfo.length*10} format={percent => `${percent/10} 门`} />
+				 			<Progress type="circle" percent={filterIsEnd(experimentsInfo).end*10} format={percent => `${percent/10} 门`} />
+				 			<Progress type="circle" percent={filterIsComplete(experimentsInfo).yes*10} format={percent => `${percent/10} 门`} />
+				 			<Progress type="circle" percent={filterIsComplete(experimentsInfo).yes/filterIsEnd(experimentsInfo).end*100} format={percent => `${percent} %`} />
+				 		</div>
+				 	</Card>
+				 }
+				 {
+				 	experimentsInfo && <Card title='所学实验课程统计' style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
+				 		<Table dataSource={experimentsInfo} columns={experimentsColumns} />
+				 	</Card>
+				 }
 				 {
 				 	behaviors &&  <Card title='学习行为记录' style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
 				 		<Table dataSource={genBehaviorsData(behaviors.behaviors)} columns={columns}/>

@@ -18,6 +18,11 @@ const api = {
 	day: {
 		getExperimentsFilterByDay: (day) => axios.get(`${URL}/data/experiments_by_day?day=${day}`).then(res => res.data),
 		getBehaviorsNow: () => axios.get(`${URL}/data/behaviors/nowadays`).then(res => res.data)
+	},
+	student: {
+		getAllStudentId: () => axios.get(`${URL}/data/students_id_all`).then(res => res.data),
+		searchByStudentId: (data) => axios.post(`${URL}/data/search_by_student_id`, {data}).then(res => res.data),
+		getInfoBySid: (sId) => axios.get(`${URL}/data/s/info?s_id=${sId}`).then(res => res.data)
 	}
 }
 

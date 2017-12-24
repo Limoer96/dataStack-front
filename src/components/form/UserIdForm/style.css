@@ -1,0 +1,13 @@
+.inputContainer {
+	width: 100%;
+	position: relative;
+	text-align: center;
+	margin: 20px 0;
+}
+.title {
+	font-size: 32px;
+	font-weight: lighter;
+}
+.btn {
+	width: 60%;
+}
