@@ -125,7 +125,7 @@ class StudentDetailPage extends React.Component {
 				 </Card>
 				 {
 				 	experimentsInfo && <Card title='所学实验课程统计' style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
-				 		<div>
+				 		<div className={style.infoContainer}>
 				 			<p>共选<span>{experimentsInfo.length}</span>门实验， 已结课实验{filterIsEnd(experimentsInfo).end}门，已完成实验<span>{filterIsComplete(experimentsInfo).yes}</span>门，通过率<span>{filterIsComplete(experimentsInfo).yes/filterIsEnd(experimentsInfo).end}</span></p>
 				 			<Progress type="circle" percent={experimentsInfo.length*10} format={percent => `${percent/10} 门`} />
 				 			<Progress type="circle" percent={filterIsEnd(experimentsInfo).end*10} format={percent => `${percent/10} 门`} />

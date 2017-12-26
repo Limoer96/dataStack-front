@@ -11,6 +11,8 @@ import ExperimentPage from './components/page/ExperimentPage/ExperimentPage';
 import ExperimentDetailPage from './components/page/ExperimentDetailPage/ExperimentDetailPage';
 import StudentDetailPage from './components/page/StudentDetailPage/StudentDetailPage';
 import FilterByDayDetailPage from './components/page/FilterByDayDetailPage/FilterByDayDetailPage';
+import SearchStudentPage from './components/page/SearchStudentPage/SearchStudentPage';
+import SearchStudentsMultConditions from './components/page/SearchStudentsMultConditions/SearchStudentsMultConditions';
 import style from './style.css';
 
 class App extends React.Component {
@@ -72,6 +74,12 @@ class App extends React.Component {
 								path='/day/:day'
 								component={FilterByDayDetailPage}
 							/>
+							<Route
+								exact
+								path='/s_id'
+								component={SearchStudentPage}
+							/>	
+							<Route exact path='/mult_search' component={SearchStudentsMultConditions} />
 							<Route render={() => <p>this is default page</p>}/>
 						</Switch>
 					</div>	

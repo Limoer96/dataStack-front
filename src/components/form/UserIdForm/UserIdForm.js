@@ -46,7 +46,7 @@ class UserIdForm extends Component {
 		this.setState({
 			loading: true
 		})
-		api.student.searchByStudentId({sId}).then((json) => {
+		api.student.searchByStudentId(sId).then((json) => {
 			saveStudentInfo(json.global.data);
 			this.setState({
 				loading: false
@@ -66,7 +66,7 @@ class UserIdForm extends Component {
 				<AutoComplete 
 					dataSource={dataSource}
 					style={{width: '60%'}}
-					onSearch={this.handleSearch}
+					onSelect={this.handleSearch}
 					placeholder='输入正确的学号继续'
 				/>
 				<Button 
@@ -75,7 +75,7 @@ class UserIdForm extends Component {
 					loading={loading}
 					onClick={this.searchStudent}
 				><Icon type='search'/></Button>
-				<Alert type='error' message={error} />
+				{error && <Alert type='error' message={error} />}
 			</div>
 		)
 	}

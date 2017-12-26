@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import UserIdForm from '../../form/UserIdForm/UserIdForm';
+import StudentListSection from '../../section/StudentListSection/StudentListSection';
 
 class SearchStudentPage extends Component {
 	state = {
@@ -15,9 +16,11 @@ class SearchStudentPage extends Component {
 		const { result } = this.state;
 		return (
 			<div>
-				{ !result && <UserIdForm saveStudentInfo={this.saveStudentInfo}/> }
+			<Card style={{width: '90%', marginLeft: '5%', marginTop: '20px'}}>
+				<UserIdForm saveStudentInfo={this.saveStudentInfo}/>
+			</Card>	
 				{
-					result && <Card></Card>
+					result && <StudentListSection data={result}/>
 				}
 			</div>
 		)

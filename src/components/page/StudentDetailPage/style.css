@@ -17,3 +17,13 @@
 .contentList > li {
 	list-style: none;
 }
+
+.infoContainer {
+	text-align: center;
+}
+.infoContainer > p {
+	font-weight: lighter;
+}
+.infoContainer span {
+	font-weight: bold;
+}

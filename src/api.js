@@ -21,8 +21,9 @@ const api = {
 	},
 	student: {
 		getAllStudentId: () => axios.get(`${URL}/data/students_id_all`).then(res => res.data),
-		searchByStudentId: (data) => axios.post(`${URL}/data/search_by_student_id`, {data}).then(res => res.data),
-		getInfoBySid: (sId) => axios.get(`${URL}/data/s/info?s_id=${sId}`).then(res => res.data)
+		searchByStudentId: (sId) => axios.get(`${URL}/data/search_by_student_id?s_id=${sId}`).then(res => res.data),
+		getInfoBySid: (sId) => axios.get(`${URL}/data/s/info?s_id=${sId}`).then(res => res.data),
+		multSearch: (data) => axios.post(`${URL}/data/mult_search`, { data }).then(res => res.data)
 	}
 }
 
