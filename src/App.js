@@ -13,6 +13,7 @@ import StudentDetailPage from './components/page/StudentDetailPage/StudentDetail
 import FilterByDayDetailPage from './components/page/FilterByDayDetailPage/FilterByDayDetailPage';
 import SearchStudentPage from './components/page/SearchStudentPage/SearchStudentPage';
 import SearchStudentsMultConditions from './components/page/SearchStudentsMultConditions/SearchStudentsMultConditions';
+import CombineSearchPage from './components/page/CombineSearchPage/CombineSearchPage';
 import style from './style.css';
 
 class App extends React.Component {
@@ -80,6 +81,7 @@ class App extends React.Component {
 								component={SearchStudentPage}
 							/>	
 							<Route exact path='/mult_search' component={SearchStudentsMultConditions} />
+							<Route exacr path='/combine_search' component={CombineSearchPage} />
 							<Route render={() => <p>this is default page</p>}/>
 						</Switch>
 					</div>	

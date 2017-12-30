@@ -42,7 +42,7 @@ const LeftSideMenu = ({ disabled }) => (
 						<Menu.Item disabled={disabled} key='15'><Link to='/mult_search'><span>更多条件</span></Link></Menu.Item>
 					</MenuItemGroup>
 					<MenuItemGroup title='搜索'>
-						<Menu.Item disabled={disabled} key='16'><span>综合搜索</span></Menu.Item>
+						<Menu.Item disabled={disabled} key='16'><Link to='/combine_search'><span>综合搜索</span></Link></Menu.Item>
 						<Menu.Item disabled={disabled} key='17'><span>更多</span></Menu.Item>
 					</MenuItemGroup>
 				</SubMenu>

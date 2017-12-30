@@ -24,6 +24,13 @@ const api = {
 		searchByStudentId: (sId) => axios.get(`${URL}/data/search_by_student_id?s_id=${sId}`).then(res => res.data),
 		getInfoBySid: (sId) => axios.get(`${URL}/data/s/info?s_id=${sId}`).then(res => res.data),
 		multSearch: (data) => axios.post(`${URL}/data/mult_search`, { data }).then(res => res.data)
+	},
+	experiments: {
+		searchByTitle: (keywords) => axios.get(`${URL}/data/experiments/search?keywords=${keywords}`).then(res => res.data),
+		multSearch: ({ duration, startWeek, endWeek, isEnd }) => axios.get(`${URL}/data/experiments/mult_search?d=${duration}&sw=${startWeek}&ew=${endWeek}&end=${isEnd}`).then(res => res.data)
+	},
+	behaviors: {
+		multSearch: ({ typeString, date }) => axios.get(`${URL}/data/behaviors/mult_search?ts=${typeString}&d=${date}`).then(res => res.data)
 	}
 }
 

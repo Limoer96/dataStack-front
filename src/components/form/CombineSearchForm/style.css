@@ -1,0 +1,15 @@
+.experimentWrapper {
+	margin: 0px 10% 20px 10%
+}
+.multSearchContainer {
+	width: 80%;
+	padding: 10px;
+}
+.multSearchContainer > p {
+	font-size: 16px;
+	font-weight: lighter;
+}
+.btnContainer {
+	width: 80%;
+	padding: 10px;
+}
