@@ -52,7 +52,7 @@ const LeftSideMenu = ({ disabled }) => (
 				<Menu.Item disabled={disabled} key='19'><span>问题与问题解决</span></Menu.Item>
 			</SubMenu>
 			<Menu.Item key='20'>
-				<span>关于</span>
+				<Link to='/about'><span>关于</span></Link>
 			</Menu.Item>
 		</Menu>
 	</div>

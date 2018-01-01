@@ -31,6 +31,10 @@ const api = {
 	},
 	behaviors: {
 		multSearch: ({ typeString, date }) => axios.get(`${URL}/data/behaviors/mult_search?ts=${typeString}&d=${date}`).then(res => res.data)
+	},
+	feedback: {
+		addStar: () => axios.get(`${URL}/feedback/add_star`).then(res => res.data),
+		addFeedback: (data) => axios.post(`${URL}/feedback/add_feedback`, {data}).then(res => res.data)
 	}
 }
 
