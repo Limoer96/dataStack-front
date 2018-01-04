@@ -1,0 +1,29 @@
+.baseInfo {
+	width: 80%;
+	padding: 10px;
+	margin: 10px;
+	background-color: rgba(0, 0, 0, .01);
+	border-radius: 5px;
+}
+
+.baseInfo:first-child {
+	margin-top: 0;
+}
+
+.baseInfo > p {
+	font-size: 16px;
+	font-weight: lighter;
+}
+.warning {
+	background-color: rgba(0, 0, 0, .05);
+	padding: 5px;
+	border-radius: 2px;
+	margin-left: 10px;
+}
+
+.btn {
+	width: 30%;
+}
+.btn:first-child {
+	margin-right: 10%;
+}

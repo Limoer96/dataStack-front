@@ -35,6 +35,9 @@ const api = {
 	feedback: {
 		addStar: () => axios.get(`${URL}/feedback/add_star`).then(res => res.data),
 		addFeedback: (data) => axios.post(`${URL}/feedback/add_feedback`, {data}).then(res => res.data)
+	},
+	dm: {
+		getScore: (data) => axios.post(`${URL}/dm/get_score`, {data}).then(res => res.data)
 	}
 }
 

@@ -47,9 +47,9 @@ const LeftSideMenu = ({ disabled }) => (
 					</MenuItemGroup>
 				</SubMenu>
 			</SubMenu>
-			<SubMenu key='sub5' title={<span>数据挖掘</span>}>
-				<Menu.Item disabled={disabled} key='18'><span>简介</span></Menu.Item>
-				<Menu.Item disabled={disabled} key='19'><span>问题与问题解决</span></Menu.Item>
+			<SubMenu key='sub5' title={<span>辅助评分</span>}>
+				<Menu.Item disabled={disabled} key='18'><Link to='/score'><span>评分</span></Link></Menu.Item>
+				<Menu.Item disabled={disabled} key='19'><span>简介</span></Menu.Item>
 			</SubMenu>
 			<Menu.Item key='20'>
 				<Link to='/about'><span>关于</span></Link>

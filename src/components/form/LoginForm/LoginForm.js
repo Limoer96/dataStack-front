@@ -50,7 +50,7 @@ class LoginForm extends Component {
 				loading: true
 			})
 			localStorage.clear(); // 先清除token
-			setTokenHeader();
+			setTokenHeader(); // 清除请求头携带的token
 			api.user.auth({userName, password}).then((json) => {
 				const { token } = json.global.data;
 				localStorage.setItem('token', token);
@@ -87,7 +87,7 @@ class LoginForm extends Component {
 				{
 					!localStorage.getItem('token') &&  !hasLogin ? <div className={style.inputWrapper}>
 						<Input 
-							placeholder='admin id'
+							placeholder='管理员账户'
 							perfix={<Icon type='user' style={{color: 'rgba(0, 0, 0, .25)'}}/>}
 							suffix={userNameSuffix}
 							value={userName}
@@ -99,7 +99,7 @@ class LoginForm extends Component {
 						<br />
 						<Input 
 							type='password'
-							placeholder='admin password'
+							placeholder='密码'
 							perfix={<Icon type='password' style={{color: 'rgba(0, 0, 0, .25)'}}/>}
 							suffix={userPasswordSuffix}
 							value={password}

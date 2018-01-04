@@ -1,6 +1,7 @@
 import React from 'react';
 import { message } from 'antd';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import setTokenHeader  from './util/setTokenHeader';
 import api from './api';
 import Header from './components/Header/Header';
 import LeftSideMenu from './components/menu/LeftSideMenu/LeftSideMenu';
@@ -15,6 +16,7 @@ import SearchStudentPage from './components/page/SearchStudentPage/SearchStudent
 import SearchStudentsMultConditions from './components/page/SearchStudentsMultConditions/SearchStudentsMultConditions';
 import CombineSearchPage from './components/page/CombineSearchPage/CombineSearchPage';
 import AboutPage from './components/page/AboutPage/AboutPage';
+import ScorePage from './components/page/ScorePage/ScorePage';
 import style from './style.css';
 
 class App extends React.Component {
@@ -29,14 +31,19 @@ class App extends React.Component {
 	componentDidMount() {
 		if(localStorage.getItem('token')) {
 			api.user.comfirmToken({token: localStorage.getItem('token')}).then(() => {
-				this.changeLoginState()
+				setTokenHeader(localStorage.getItem('token'));
+				this.changeLoginState();
 			}).catch(() => {
 				localStorage.clear();
 				message.info('token失效，请先登录');
 			})
 		}
 	}
+	componentDidUpdate() {
+		console.log('dadasdadas');
+	}
 	render() {
+		console.log('state', this.state.isLogin);
 		const { isLogin } = this.state;
 		return (
 			<Router>
@@ -80,6 +87,11 @@ class App extends React.Component {
 								exact
 								path='/s_id'
 								component={SearchStudentPage}
+							/>	
+							<Route
+								exact
+								path='/score'
+								component={ScorePage}
 							/>	
 							<Route exact path='/about' component={AboutPage} />
 							<Route exact path='/mult_search' component={SearchStudentsMultConditions} />
