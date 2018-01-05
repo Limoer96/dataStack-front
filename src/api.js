@@ -37,7 +37,8 @@ const api = {
 		addFeedback: (data) => axios.post(`${URL}/feedback/add_feedback`, {data}).then(res => res.data)
 	},
 	dm: {
-		getScore: (data) => axios.post(`${URL}/dm/get_score`, {data}).then(res => res.data)
+		getScore: (data) => axios.post(`${URL}/dm/get_score`, {data}).then(res => res.data),
+		getScoreByRecent: (data) => axios.post(`${URL}/dm/get_by_recent_record`, {data}).then(res => res.data)
 	}
 }
 

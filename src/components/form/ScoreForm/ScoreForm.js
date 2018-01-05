@@ -53,12 +53,11 @@ export default class ScoreForm extends Component {
 		const { sId, eId, stuTime, totalTime, everyTime, totalDuration, publishCondition } = this.state; 
 		const attendance = (stuTime/totalTime).toFixed(2);
 		const timeRate = (everyTime/totalDuration).toFixed(2);
-		api.dm.getScore({sId, eId, attendance, timeRate, publishCondition}).then((json) => {
-			this.props.saveLoadData(json.global.data, { sId, eId, attendance, timeRate, publishCondition});
-		}).catch(() => {
-			this.setState({
-				error: '评分失败，请再次提交'
-			})
+		const recentPromise = api.dm.getScoreByRecent({sId, eId});
+		const scorePromise = api.dm.getScore({sId, eId, attendance, timeRate, publishCondition});
+		Promise.all([recentPromise, scorePromise]).then(([json1, json2]) => {
+			const score = json1.global.data;
+			this.props.saveLoadData(json2.global.data, { sId, eId, attendance, timeRate, publishCondition, score});
 		})
 	}
 	render() {
